@@ -6,7 +6,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text>Settings</Text>
       <Link href="/" asChild>
-        <Button title="View Home" />
+        <Text>View Home</Text>
       </Link>
     </View>
   );

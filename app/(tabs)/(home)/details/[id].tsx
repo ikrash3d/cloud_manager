@@ -1,13 +1,13 @@
-import { Link } from 'expo-router';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { useLocalSearchParams, Link } from 'expo-router';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default function DetailsScreen() {
+  const { id } = useLocalSearchParams();
+
   return (
     <View style={styles.container}>
-      <Text>Details</Text>
-      <Link href="/" asChild>
-        <Button title="View Home" />
-      </Link>
+      <Text>Details of user {id}</Text>
+      <Link href="/">Home</Link>
     </View>
   );
 }
