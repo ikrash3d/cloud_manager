@@ -1,18 +1,23 @@
-import { Stack } from 'expo-router';
+import { Footer, Header } from '@/components';
+import { GridCarouselProvider } from '@/contexts';
+import { Slot, Tabs } from 'expo-router';
+import { StyleSheet, View } from 'react-native';
 
-export default function RootLayout() {
+export default function HomeLayout() {
   return (
-    <Stack
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: '#f4511e',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}>
-      <Stack.Screen name="(tabs)" />
-    </Stack>
+    <View style={styles.container}>
+      <Header />
+      <GridCarouselProvider>
+        <Slot />
+      </GridCarouselProvider>
+      <Footer />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 50,
+    flex: 1,
+  },
+});
