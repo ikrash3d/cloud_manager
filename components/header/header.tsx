@@ -1,10 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Link } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 const Header = () => {
   return (
     <View>
       <Text style={styles.headerOne}>This is a header</Text>
-      <Text style={styles.headerTwo}>Page name</Text>
+      <Pressable style={styles.pressable}>
+        <Link href="/">
+          <Text style={styles.textColor}>Home</Text>
+        </Link>
+      </Pressable>
     </View>
   );
 };
@@ -22,6 +27,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
     color: 'white',
     textAlign: 'center',
+  },
+
+  pressable: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+    width: 100,
+    alignItems: 'center',
+    marginLeft: 10,
+  },
+
+  textColor: {
+    color: 'white',
   },
 });
 

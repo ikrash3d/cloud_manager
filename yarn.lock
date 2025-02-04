@@ -3333,6 +3333,23 @@ expo-font@~13.0.3:
   dependencies:
     fontfaceobserver "^2.1.0"
 
+expo-image-loader@~5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/expo-image-loader/-/expo-image-loader-5.0.0.tgz#4f58a21ab26e40d6fccc211b664fd9fe21a5dcb8"
+  integrity sha512-Eg+5FHtyzv3Jjw9dHwu2pWy4xjf8fu3V0Asyy42kO+t/FbvW/vjUixpTjPtgKQLQh+2/9Nk4JjFDV6FwCnF2ZA==
+
+expo-image-picker@~16.0.5:
+  version "16.0.5"
+  resolved "https://registry.yarnpkg.com/expo-image-picker/-/expo-image-picker-16.0.5.tgz#fefb08f1a35980015122499fb388f2cfcbf08485"
+  integrity sha512-Rkc4vihqPN/48PV3QJkrG10Lg5s1LonKmpVnGwBSlHjRR5ngqJH++DYFndgD69hLaWrJukzCYpP3CyTMAAatWg==
+  dependencies:
+    expo-image-loader "~5.0.0"
+
+expo-image@~2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/expo-image/-/expo-image-2.0.4.tgz#52db27a489b2fc652b1dd612748366781913d93b"
+  integrity sha512-oIVSlV/BpBJbI9Anf8RjraGJXDWSJxNKxdXkYBJ31XrQaUstOM7OmsVKjOK40ZFZHIz3rx5SBJWK5w52Uz+/bg==
+
 expo-keep-awake@~14.0.2:
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-14.0.2.tgz#124a729df43c87994631f51d5b1b5093d58e6c80"
@@ -3405,6 +3422,11 @@ expo-system-ui@~4.0.7:
   dependencies:
     "@react-native/normalize-colors" "0.76.6"
     debug "^4.3.2"
+
+expo-video@~2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/expo-video/-/expo-video-2.0.5.tgz#5c5311b0a20dcb7897d06cd4f9d7fb0ce13711d9"
+  integrity sha512-K5Q4bFKtYq0wEC38mckWUYeaTXsmhl6duidhSdbA63VBy6cwxDOk8uPsFPTQD3FXKJg6wFB0z8ZUASSPuUaY5A==
 
 expo-web-browser@~14.0.2:
   version "14.0.2"
@@ -5958,6 +5980,13 @@ react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-native-element-dropdown@^2.12.4:
+  version "2.12.4"
+  resolved "https://registry.yarnpkg.com/react-native-element-dropdown/-/react-native-element-dropdown-2.12.4.tgz#259db84e673b9f4fc03090a54760efd4f4a1456c"
+  integrity sha512-abZc5SVji9FIt7fjojRYrbuvp03CoeZJrgvezQoDoSOrpiTqkX69ix5m+j06W2AVncA0VWvbT+vCMam8SoVadw==
+  dependencies:
+    lodash "^4.17.21"
 
 react-native-gesture-handler@~2.20.2:
   version "2.20.2"

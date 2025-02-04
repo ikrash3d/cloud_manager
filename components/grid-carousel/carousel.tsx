@@ -1,9 +1,8 @@
 import { GridCarousel as GridCarouselInterface } from '@/utils/interfaces/Grid';
-import { Link } from 'expo-router';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View, Text } from 'react-native';
 
 import { ActionBar, CarouselCard } from '@/components';
-import { useGridCarousel } from '@/contexts';
+import { useGridCarousel, useMedia } from '@/contexts';
 
 interface GridCarouselProps {
   items: GridCarouselInterface[];
@@ -11,17 +10,24 @@ interface GridCarouselProps {
 
 const GridCarousel = ({ items }: GridCarouselProps) => {
   const { itemPerPages, currentIndex } = useGridCarousel();
+  const { isLoading } = useMedia();
 
   const startOfPage = currentIndex * itemPerPages;
   const endOfPage = startOfPage + itemPerPages;
 
+  console.log('isLoading', isLoading);
+
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.grid}>
-        {items.slice(startOfPage, endOfPage).map((item) => (
-          <CarouselCard key={item.key} url={item.url} title={item.title} />
-        ))}
-      </ScrollView>
+      {isLoading ? (
+        <Text>Loading...</Text>
+      ) : (
+        <ScrollView contentContainerStyle={styles.grid}>
+          {items.slice(startOfPage, endOfPage).map((item) => (
+            <CarouselCard key={item.key} url={item.url} title={item.title} />
+          ))}
+        </ScrollView>
+      )}
 
       <ActionBar itemCount={items.length} />
     </View>
@@ -41,21 +47,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-  },
-
-  card: {
-    minWidth: 100,
-    minHeight: 75,
-    height: 100,
-    margin: 10,
-    padding: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'lightgray',
-  },
-
-  cardText: {
-    marginTop: 5,
   },
 });
 

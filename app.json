@@ -23,7 +23,26 @@
       "bundler": "metro",
       "output": "static"
     },
-    "plugins": ["expo-router", "expo-font", "expo-asset"],
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-asset",
+      [
+        "expo-image-picker",
+        {
+          "photoPermission": "The app accesses your photos to let you share them with your friends",
+          "cameraPermission": "The app accesses your camera to let you share photos with your friends",
+          "microphonePermission": "The app accesses your microphone to let you share audio with your friends"
+        }
+      ],
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true
     }

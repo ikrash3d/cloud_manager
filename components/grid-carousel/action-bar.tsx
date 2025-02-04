@@ -8,7 +8,7 @@ interface ActionBarProps {
 }
 
 const ActionBar = ({ itemCount }: ActionBarProps) => {
-  const { itemPerPages, currentIndex, onNext, onPrevious, setItemPerPages } = useGridCarousel();
+  const { itemPerPages, currentIndex, onNext, onPrevious, setItemPerPages, setCurrentIndex } = useGridCarousel();
 
   const numberOfPages = Math.ceil(itemCount / itemPerPages);
   const pagesArray = Array.from({ length: numberOfPages }, (_, i) => {
@@ -42,9 +42,11 @@ const ActionBar = ({ itemCount }: ActionBarProps) => {
           <AntDesign name="caretleft" size={24} color="black" />
         </Pressable>
         {pagesArray.map((page) => (
-          <Text key={page.key} style={selectedIndex(page.key)}>
-            {page.pageNumber}
-          </Text>
+          <Pressable key={page.key} onPress={() => setCurrentIndex(page.key)}>
+            <Text key={page.key} style={selectedIndex(page.key)}>
+              {page.pageNumber}
+            </Text>
+          </Pressable>
         ))}
         <Pressable onPress={onNext}>
           <AntDesign name="caretright" size={24} color="black" />

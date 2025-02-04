@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 interface LinksProps {
   key: string;
-  href: '/grid' | '/about' | '/user/[id]';
+  href: '/grid' | '/camera' | '/about' | '/user/[id]';
   text: string;
   params?: { id: string };
 }
@@ -14,6 +14,11 @@ export default function Page() {
       key: 'grid',
       href: '/grid',
       text: 'Grid',
+    },
+    {
+      key: 'camera',
+      href: '/camera',
+      text: 'Camera',
     },
     {
       key: 'about',

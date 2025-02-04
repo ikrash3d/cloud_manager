@@ -1,4 +1,5 @@
 import { GridCarousel } from '@/components';
+import ImagePicker from '@/components/image-picker';
 import { useGridCarousel } from '@/contexts';
 import { Link } from 'expo-router';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
@@ -9,6 +10,7 @@ export default function Page() {
   return (
     <View style={styles.container}>
       <GridCarousel items={cards} />
+      <ImagePicker />
       <Pressable style={styles.buttonContainer}>
         <Link href="/">
           <Text style={styles.textColor}>main page</Text>

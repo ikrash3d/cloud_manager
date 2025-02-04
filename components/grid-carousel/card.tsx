@@ -5,7 +5,7 @@ import { GridCarousel } from '@/utils/interfaces/Grid';
 const CarouselCard = ({ url, title }: GridCarousel) => {
   return (
     <View style={styles.card}>
-      <Image source={url} style={{ width: 50, height: 50 }} />
+      <Image source={url} style={styles.image} />
       <Text style={styles.cardText}>{title}</Text>
     </View>
   );
@@ -13,14 +13,19 @@ const CarouselCard = ({ url, title }: GridCarousel) => {
 
 const styles = StyleSheet.create({
   card: {
-    minWidth: 100,
-    minHeight: 100,
+    minWidth: 150,
+    minHeight: 150,
     height: 100,
     margin: 10,
     padding: 5,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'lightgray',
+  },
+
+  image: {
+    width: 125,
+    height: 125,
   },
 
   cardText: {

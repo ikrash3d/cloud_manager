@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { GridCarousel } from '@/utils/interfaces/Grid';
+import { useMedia } from '../media';
 
 interface GridCarouselContextProps {
   itemCount: number;
@@ -7,7 +8,6 @@ interface GridCarouselContextProps {
   itemPerPages: number;
   cards: GridCarousel[];
 
-  setItemCount: (itemCount: number) => void;
   setCurrentIndex: (currentIndex: number) => void;
   setItemPerPages: (itemPerPages: number) => void;
   onPrevious: () => void;
@@ -21,26 +21,19 @@ interface GridCarouselProviderProps {
 const GridCarouselContext = createContext<GridCarouselContextProps | undefined>(undefined);
 
 export const GridCarouselProvider = ({ children }: GridCarouselProviderProps) => {
-  const Mike = require('../../assets/mike.jpg');
-  const ExcitedMike = require('../../assets/mike_happy.jpg');
-
-  const cards: GridCarousel[] = [
-    { key: '0', url: Mike, title: 'Mike' },
-    { key: '1', url: ExcitedMike, title: 'Excited Mike' },
-  ];
-
-  const multipliedCards: GridCarousel[] = Array.from({ length: 50 }).map((_, index) => {
-    return {
-      key: index.toString(),
-      url: cards[index % cards.length].url,
-      title: `${cards[index % cards.length].title} ${index}`,
-    };
-  });
-
-  const [itemCount, setItemCount] = useState(multipliedCards.length);
+  const { pictureUris } = useMedia();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemPerPages, setItemPerPages] = useState(5);
-  const [numberOfPages, setNumberOfPages] = useState(0);
+
+  const cards: GridCarousel[] = pictureUris.map((uri, index) => {
+    return {
+      key: index.toString(),
+      url: { uri },
+      title: `Index: ${index}`,
+    };
+  });
+  const itemCount = cards.length;
+  const numberOfPages = Math.ceil(itemCount / itemPerPages);
 
   const onPrevious = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + numberOfPages) % numberOfPages);
@@ -50,22 +43,12 @@ export const GridCarouselProvider = ({ children }: GridCarouselProviderProps) =>
     setCurrentIndex((prevIndex) => (prevIndex + 1) % numberOfPages);
   };
 
-  const onNumberOfPages = () => {
-    const numberOfPages = Math.ceil(itemCount / itemPerPages);
-
-    setNumberOfPages(numberOfPages);
-  };
-
   // Allows to set the proper index when the number of items per page changes
   const clampPageIndex = () => {
     const maxIndex = Math.floor(Math.max(0, (itemCount - 1) / itemPerPages));
 
     return Math.min(currentIndex, maxIndex);
   };
-
-  useEffect(() => {
-    onNumberOfPages();
-  }, [itemPerPages]);
 
   useEffect(() => {
     setCurrentIndex(clampPageIndex());
@@ -77,10 +60,9 @@ export const GridCarouselProvider = ({ children }: GridCarouselProviderProps) =>
         itemCount,
         currentIndex,
         itemPerPages,
-        cards: multipliedCards,
+        cards,
         onNext,
         onPrevious,
-        setItemCount,
         setCurrentIndex,
         setItemPerPages,
       }}>
