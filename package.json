@@ -16,9 +16,15 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@aws-amplify/api": "^6.2.3",
+    "@aws-amplify/auth": "^6.10.2",
+    "@aws-amplify/core": "^6.9.3",
+    "@aws-amplify/storage": "^6.7.9",
     "@expo/vector-icons": "expo/vector-icons",
     "@react-native-picker/picker": "^2.11.0",
     "@react-navigation/native": "^7.0.14",
+    "amplify": "^0.0.11",
+    "aws-amplify": "^6.12.3",
     "expo": "^52.0.28",
     "expo-asset": "~11.0.3",
     "expo-constants": "~17.0.5",
